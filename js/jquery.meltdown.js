@@ -21,9 +21,8 @@
 	}
 
 	function update(previewArea, input) {
-		var mde = Markdown;
 		previewArea.height(input.outerHeight());
-		previewArea.html(mde(input.val()));
+		previewArea.html(marked(input.val()));
 	}
 
 	function addEventHandler(thees, example, control) {
@@ -201,22 +200,6 @@
 			};
 		}
 
-		examples.link = {
-			label: "Link",
-			group: "kitchenSink",
-			groupLabel: "Kitchen Sink",
-			altText: "Link",
-			markdown: "[Example link](http://example.com/ \"Link title\")"
-		};
-
-		examples.img = {
-			label: "Image",
-			group: "kitchenSink",
-			groupLabel: "Kitchen Sink",
-			altText: "Image",
-			markdown: "![Alt text](http://image_url)"
-		};
-
 		examples.blockquote = {
 			label: "Blockquote",
 			group: "kitchenSink",
@@ -334,7 +317,7 @@
 
 			thees = jQuery(this);
 			thees.wrap('<div class="' + name + '_wrap" />');
-			thees.before('<div><div style="display: none;" class="' + name + '_preview-wrap"><span class="' + name + '_preview-header">Preview Area (<a class="meltdown_techpreview" href="https://github.com/iphands/Meltdown/issues/1">Tech Preview</a>)</span><div class="' + name + '_preview"></div></div></div><div class="meltdown_bar"><ul class="' + name + '_controls"></ul></div>');
+			thees.before('<div><div style="display: none;" class="' + name + '_preview-wrap"><span class="' + name + '_preview-header">Preview Area</span><div class="' + name + '_preview"></div></div></div><div class="meltdown_bar"><ul class="' + name + '_controls"></ul></div>');
 			wrap = thees.parent();
 			previewWrap = wrap.children(':eq(0)').children(':eq(0)'); /* wrapper for the preview area, but not where the updated content goes */
 			preview = previewWrap.children(':eq(1)'); /* preview area where updates happen */
